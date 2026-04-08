@@ -215,7 +215,7 @@ export default function Home() {
 
       {/* 主标题区 */}
       <div className="pt-8 pb-4 text-center">
-        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
           遇见你的心动男友
         </h1>
         <p className="mt-2 text-gray-600 dark:text-gray-400">
