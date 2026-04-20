@@ -26,6 +26,9 @@ export const users = pgTable("users", {
 	id: serial().primaryKey().notNull(),
 	username: varchar({ length: 50 }).notNull(),
 	password: varchar({ length: 255 }).notNull(),
+	email: varchar({ length: 255 }),
+	status: varchar({ length: 20 }).default("active").notNull(),
+	isAdmin: boolean("is_admin").default(false).notNull(),
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
 }, (table) => [
 	index("users_username_idx").using("btree", table.username.asc().nullsLast().op("text_ops")),
@@ -42,6 +45,9 @@ export const gameRecords = pgTable("game_records", {
 	scenario: varchar({ length: 100 }).notNull(),
 	finalScore: integer("final_score").notNull(),
 	result: varchar({ length: 20 }).notNull(),
+	status: varchar({ length: 20 }).default("completed").notNull(),
+	amount: integer("amount").default(0).notNull(),
+	orderNo: varchar("order_no", { length: 50 }),
 	playedAt: timestamp("played_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
 }, (table) => [
 	index("game_records_user_id_idx").on(table.userId),
