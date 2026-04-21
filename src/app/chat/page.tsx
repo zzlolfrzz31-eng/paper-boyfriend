@@ -23,7 +23,7 @@ import {
   CheckCircle,
   XCircle,
   Loader2
-} from 'lucide-react';
+} from 'lucide-react'
 
 export default function ChatPage() {
   const router = useRouter();
