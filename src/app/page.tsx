@@ -28,9 +28,11 @@ export default function Home() {
     async function checkAuth() {
       try {
         const res = await fetch('/api/auth/me');
-        const data = await res.json();
-        if (data.success) {
-          setUser(data.data);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success) {
+            setUser(data.data);
+          }
         }
       } catch (err) {
         // 未登录
