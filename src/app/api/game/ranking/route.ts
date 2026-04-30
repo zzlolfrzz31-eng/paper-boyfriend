@@ -35,8 +35,7 @@ export async function GET() {
     data?.forEach(record => {
       const userId = record.user_id;
       const currentScore = record.final_score;
-      const users = record.users as any;
-      const username = (users && users.length > 0 ? users[0].username : null) || '未知用户';
+      const username = record.users?.username || '未知用户';
 
       if (!userScores.has(userId) || currentScore > userScores.get(userId)!.score) {
         userScores.set(userId, { username, score: currentScore });

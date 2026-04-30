@@ -11,7 +11,7 @@ interface Stats {
   recentOrders: number;
 }
 
-export default function AdminPage() {
+export default function AdminDashboard() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -19,24 +19,23 @@ export default function AdminPage() {
     async function fetchStats() {
       try {
         const res = await fetch('/api/admin/stats');
-        if (res.ok) {
-          const data = await res.json();
-          if (data.success) {
-            setStats(data.data);
-          }
+        const data = await res.json();
+        if (data.success) {
+          setStats(data.data);
         }
-      } catch (error) {
-        console.error('Failed to fetch stats:', error);
+      } catch (err) {
+        console.error('获取统计数据失败:', err);
       } finally {
         setLoading(false);
       }
     }
+
     fetchStats();
   }, []);
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-96">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-pink-500 mx-auto mb-4"></div>
           <p className="text-gray-600">加载中...</p>
@@ -47,7 +46,7 @@ export default function AdminPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">管理后台</h1>
+      <h1 className="text-2xl font-bold text-gray-
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <Card>

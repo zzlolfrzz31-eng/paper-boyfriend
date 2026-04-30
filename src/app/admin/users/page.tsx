@@ -17,7 +17,7 @@ interface User {
   created_at: string;
 }
 
-const STATUS_OPTIONS = ['active', 'inactive', 'suspended'];
+const STATUS_OPTIONS = ['active', 1
 const ALL_STATUS = 'all';
 
 export default function UsersPage() {
